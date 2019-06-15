@@ -13,6 +13,7 @@ import android.preference.RingtonePreference;
 import android.support.v4.app.NotificationCompat;
 
 import rktuhinbd.salahchallenge.R;
+import rktuhinbd.salahchallenge.View.AlarmActivity;
 import rktuhinbd.salahchallenge.View.MainActivity;
 
 public class NotificationHelper_Zuhr extends ContextWrapper {
@@ -24,15 +25,20 @@ public class NotificationHelper_Zuhr extends ContextWrapper {
     public NotificationHelper_Zuhr(Context base) {
         super(base);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            createChannel();
+            createChannel(base);
         }
     }
 
     @TargetApi(Build.VERSION_CODES.O)
-    private void createChannel() {
-        NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
+    private void createChannel(Context context) {
+        //NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
 
-        getManager().createNotificationChannel(channel);
+        //getManager().createNotificationChannel(channel);
+
+        Intent i = new Intent(context, AlarmActivity.class);
+        i.putExtra("Title","Salah Reminder");
+        i.putExtra("Desc","Its time for Zuhr");
+        context.startActivity(i);
     }
 
     public NotificationManager getManager() {

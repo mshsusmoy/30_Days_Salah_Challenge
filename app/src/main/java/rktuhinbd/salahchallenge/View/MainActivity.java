@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,7 +17,6 @@ import java.util.Calendar;
 
 import rktuhinbd.salahchallenge.Model.DatabaseHelper;
 import rktuhinbd.salahchallenge.R;
-import rktuhinbd.salahchallenge.ViewModel.AlertReceiver;
 import rktuhinbd.salahchallenge.ViewModel.AlertReceiverDefault;
 import rktuhinbd.salahchallenge.ViewModel.DefaultNotificationReceiver;
 

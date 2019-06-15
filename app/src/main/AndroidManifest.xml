@@ -48,7 +48,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ViewModel.AlertReceiver" />
+        <receiver android:name=".ViewModel.AlertReceiverFajr" />
         <receiver android:name=".ViewModel.AlertReceiverZuhr" />
         <receiver android:name=".ViewModel.AlertReceiverAsr" />
         <receiver android:name=".ViewModel.AlertReceiverMaghrib" />

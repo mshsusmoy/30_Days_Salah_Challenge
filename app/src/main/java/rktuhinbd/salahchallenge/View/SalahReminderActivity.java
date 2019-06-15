@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,7 +21,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 import rktuhinbd.salahchallenge.R;
-import rktuhinbd.salahchallenge.ViewModel.AlertReceiver;
+import rktuhinbd.salahchallenge.ViewModel.AlertReceiverFajr;
 import rktuhinbd.salahchallenge.ViewModel.AlertReceiverAsr;
 import rktuhinbd.salahchallenge.ViewModel.AlertReceiverDefault;
 import rktuhinbd.salahchallenge.ViewModel.AlertReceiverIsha;
@@ -273,7 +272,7 @@ public class SalahReminderActivity extends AppCompatActivity implements android.
         PendingIntent pendingIntent = null;
 
         if(fajrFlag){
-            Intent intent = new Intent(this, AlertReceiver.class);
+            Intent intent = new Intent(this, AlertReceiverFajr.class);
             intent.putExtra("flag","fajr");
             pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
         }
@@ -311,7 +310,7 @@ public class SalahReminderActivity extends AppCompatActivity implements android.
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         SharedPreferences prefs = getSharedPreferences("Shared Preference", MODE_PRIVATE);
         if(!prefs.getString("fajr", "").equals("")){
-            Intent intent = new Intent(this, AlertReceiver.class);
+            Intent intent = new Intent(this, AlertReceiverFajr.class);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
             alarmManager.cancel(pendingIntent);
@@ -347,7 +346,7 @@ public class SalahReminderActivity extends AppCompatActivity implements android.
     }
     public void SetDefaultAlarm(){
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, 5);
+        c.set(Calendar.HOUR_OF_DAY, 10);
         c.set(Calendar.MINUTE, 0);
         c.set(Calendar.SECOND, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

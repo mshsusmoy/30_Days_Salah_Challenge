@@ -11,11 +11,8 @@ import rktuhinbd.salahchallenge.View.QuranActivity;
 public class AlertReceiverAsr extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent i = new Intent(context, AlarmActivity.class);
-        i.putExtra("Title","Salah Reminder");
-        i.putExtra("Desc","Its time for Asr");
-        context.startActivity(i);
-        //NotificationHelper_Asr notificationHelper = new NotificationHelper_Asr(context);
+
+        NotificationHelper_Asr notificationHelper = new NotificationHelper_Asr(context);
         //NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
         //notificationHelper.getManager().notify(3, nb.build());
     }
