@@ -35,9 +35,9 @@ public class NotificationHelper_Asr extends ContextWrapper {
 
     @TargetApi(Build.VERSION_CODES.O)
     private void createChannel(Context context) {
-        //NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
 
-        //getManager().createNotificationChannel(channel);
+        getManager().createNotificationChannel(channel);
         Intent i = new Intent(context, AlarmActivity.class);
         i.putExtra("Title","Salah Reminder");
         i.putExtra("Desc","Its time for Asr");

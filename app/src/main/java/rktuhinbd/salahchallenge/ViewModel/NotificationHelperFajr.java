@@ -31,14 +31,14 @@ public class NotificationHelperFajr extends ContextWrapper {
 
     @TargetApi(Build.VERSION_CODES.O)
     private void createChannel(Context context) {
-//        NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
 //
-//        getManager().createNotificationChannel(channel);
+       getManager().createNotificationChannel(channel);
 
-        Intent i = new Intent(context, AlarmActivity.class);
-        i.putExtra("Title","Salah Reminder");
-        i.putExtra("Desc","Its time for Fajr");
-        context.startActivity(i);
+        //Intent i = new Intent(context, AlarmActivity.class);
+        //i.putExtra("Title","Salah Reminder");
+        //i.putExtra("Desc","Its time for Fajr");
+        //context.startActivity(i);
     }
 
     public NotificationManager getManager() {
@@ -50,6 +50,14 @@ public class NotificationHelperFajr extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getChannelNotification() {
+        CharSequence charSequence = "Dismiss";
+        Intent mIntent = new Intent(getApplicationContext(), AlarmStopper.class);
+        mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, mIntent, 0);
+
+        MediaController.getInstance(getApplicationContext()).playMusic();
+
+
         Intent repeating_intent = new Intent(getApplicationContext(), MainActivity.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent_fajr =  PendingIntent.getActivity(getApplicationContext(),1,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);

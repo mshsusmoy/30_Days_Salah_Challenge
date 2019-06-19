@@ -4,6 +4,7 @@
     package="rktuhinbd.salahchallenge">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SET_ALARM"/>
 
     <application
         android:allowBackup="false"
@@ -48,12 +49,31 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ViewModel.AlertReceiverFajr" />
-        <receiver android:name=".ViewModel.AlertReceiverZuhr" />
-        <receiver android:name=".ViewModel.AlertReceiverAsr" />
-        <receiver android:name=".ViewModel.AlertReceiverMaghrib" />
-        <receiver android:name=".ViewModel.AlertReceiverIsha" />
-        <receiver android:name=".ViewModel.AlertReceiverDefault" />
+        <receiver android:name=".ViewModel.AlertReceiverFajr"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+        <receiver android:name=".ViewModel.AlertReceiverZuhr"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+        <receiver android:name=".ViewModel.AlertReceiverAsr"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+        <receiver android:name=".ViewModel.AlertReceiverMaghrib"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+        <receiver android:name=".ViewModel.AlertReceiverIsha"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+        <receiver android:name=".ViewModel.AlertReceiverDefault"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
     </application>
 
 </manifest>
+

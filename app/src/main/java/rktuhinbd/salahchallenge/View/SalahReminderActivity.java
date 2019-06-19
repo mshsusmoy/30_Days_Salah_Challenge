@@ -67,7 +67,7 @@ public class SalahReminderActivity extends AppCompatActivity implements android.
         txtAlarmTimeIsha = findViewById(R.id.txt_alarm_time_isha);
         aSwitch = findViewById(R.id.switch_alarm_on_or_off);
 
-        Toast.makeText(this, prefs.getString("aSwitch",""), Toast.LENGTH_SHORT).show();
+
 
         if (prefs.getString("aSwitch","").equals("on")) {
             Toast.makeText(this, "aSwitch On", Toast.LENGTH_SHORT).show();
@@ -303,7 +303,7 @@ public class SalahReminderActivity extends AppCompatActivity implements android.
         }
 
        // alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
     }
 
     private void stopAlarm() {
@@ -352,6 +352,6 @@ public class SalahReminderActivity extends AppCompatActivity implements android.
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiverDefault.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 9, intent, 0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),AlarmManager.INTERVAL_HALF_DAY,pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,c.getTimeInMillis(),AlarmManager.INTERVAL_HALF_DAY,pendingIntent);
     }
 }

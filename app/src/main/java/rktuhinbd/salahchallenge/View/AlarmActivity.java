@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import rktuhinbd.salahchallenge.R;
+import rktuhinbd.salahchallenge.ViewModel.MediaController;
 
 public class AlarmActivity extends AppCompatActivity {
     private MediaPlayer player;
@@ -56,6 +57,7 @@ public class AlarmActivity extends AppCompatActivity {
         player.start();
     }
     public void OffAlarm(){
+        MediaController.getInstance(getApplicationContext()).stopMusic();
         player.stop();
     }
 }
