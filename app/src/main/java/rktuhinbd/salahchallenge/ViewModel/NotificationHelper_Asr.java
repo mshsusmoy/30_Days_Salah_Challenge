@@ -38,10 +38,10 @@ public class NotificationHelper_Asr extends ContextWrapper {
         NotificationChannel channel = new NotificationChannel(channelID, channelName, NotificationManager.IMPORTANCE_HIGH);
 
         getManager().createNotificationChannel(channel);
-        Intent i = new Intent(context, AlarmActivity.class);
-        i.putExtra("Title","Salah Reminder");
-        i.putExtra("Desc","Its time for Asr");
-        context.startActivity(i);
+//        Intent i = new Intent(context, AlarmActivity.class);
+//        i.putExtra("Title","Salah Reminder");
+//        i.putExtra("Desc","Its time for Asr");
+//        context.startActivity(i);
     }
 
     public NotificationManager getManager() {
@@ -53,6 +53,13 @@ public class NotificationHelper_Asr extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getChannelNotification() {
+        CharSequence charSequence = "Dismiss";
+        Intent mIntent = new Intent(getApplicationContext(), AlarmStopper.class);
+        mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, mIntent, 0);
+
+        MediaController.getInstance(getApplicationContext()).playMusic();
+
         Intent repeating_intent = new Intent(getApplicationContext(), MainActivity.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent_fajr =  PendingIntent.getActivity(getApplicationContext(),3,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
@@ -60,11 +67,11 @@ public class NotificationHelper_Asr extends ContextWrapper {
         player.setLooping(true);
         player.start();
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentIntent(pendingIntent_fajr)
                 .setContentTitle("Salah Reminder!")
                 .setContentText("Its time for Asr")
                 .setAutoCancel(false)
                 .setDefaults(RingtonePreference.DEFAULT_ORDER)
+                .addAction(R.drawable.alarm_clock,charSequence,pendingIntent)
                 .setVibrate(new long[] { 0, 200, 100, 200 })
                 .setSmallIcon(R.drawable.ic_launcher_foreground);
     }

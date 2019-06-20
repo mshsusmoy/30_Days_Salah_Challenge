@@ -4,6 +4,8 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.provider.Settings;
 
+import rktuhinbd.salahchallenge.View.MainActivity;
+
 public class MediaController {
 
     private static MediaController sInstance;
@@ -31,5 +33,9 @@ public class MediaController {
             mMediaPlayer.stop();
             mMediaPlayer.seekTo(0);
         }
+    }
+
+    public void startMain(){
+
     }
 }

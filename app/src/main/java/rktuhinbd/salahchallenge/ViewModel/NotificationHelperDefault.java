@@ -46,7 +46,6 @@ public class NotificationHelperDefault extends ContextWrapper {
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent_fajr =  PendingIntent.getActivity(getApplicationContext(),9,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentIntent(pendingIntent_fajr)
                 .setContentTitle("Assalamu Alaikum")
                 .setContentText("Read verse from Quran or read any Hadith")
                 .setAutoCancel(true)

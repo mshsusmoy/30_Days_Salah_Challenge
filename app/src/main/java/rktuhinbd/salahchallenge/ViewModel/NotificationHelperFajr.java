@@ -65,9 +65,9 @@ public class NotificationHelperFajr extends ContextWrapper {
                 .setContentIntent(pendingIntent_fajr)
                 .setContentTitle("Salah Reminder!")
                 .setContentText("Its time for Fajr")
-                .setAutoCancel(true)
                 .setDefaults(RingtonePreference.DEFAULT_ORDER)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
+                .addAction(R.drawable.alarm_clock,charSequence,pendingIntent)
+                .setAutoCancel(true)
                 .setVibrate(new long[] { 0, 200, 100, 200 })
                 .setSmallIcon(R.drawable.ic_launcher_foreground);
     }

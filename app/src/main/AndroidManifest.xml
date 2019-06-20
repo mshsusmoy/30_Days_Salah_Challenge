@@ -73,6 +73,12 @@
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+        <receiver
+            android:name=".ViewModel.AlarmStopper"
+            android:exported="true"
+            android:enabled="true"
+            tools:ignore="ExportedReceiver,InnerclassSeparator"/>
+
     </application>
 
 </manifest>

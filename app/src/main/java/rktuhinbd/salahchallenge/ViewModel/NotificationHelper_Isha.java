@@ -35,10 +35,10 @@ public class NotificationHelper_Isha extends ContextWrapper {
 
         getManager().createNotificationChannel(channel);
 
-        Intent i = new Intent(context, AlarmActivity.class);
-        i.putExtra("Title","Salah Reminder");
-        i.putExtra("Desc","Its time for Isha");
-        context.startActivity(i);
+//        Intent i = new Intent(context, AlarmActivity.class);
+//        i.putExtra("Title","Salah Reminder");
+//        i.putExtra("Desc","Its time for Isha");
+//        context.startActivity(i);
     }
 
     public NotificationManager getManager() {
@@ -50,16 +50,22 @@ public class NotificationHelper_Isha extends ContextWrapper {
     }
 
     public NotificationCompat.Builder getChannelNotification() {
+        CharSequence charSequence = "Dismiss";
+        Intent mIntent = new Intent(getApplicationContext(), AlarmStopper.class);
+        mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, mIntent, 0);
+
+        MediaController.getInstance(getApplicationContext()).playMusic();
+
         Intent repeating_intent = new Intent(getApplicationContext(), MainActivity.class);
         repeating_intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent_fajr =  PendingIntent.getActivity(getApplicationContext(),5,repeating_intent,PendingIntent.FLAG_UPDATE_CURRENT);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
-                .setContentIntent(pendingIntent_fajr)
                 .setContentTitle("Salah Reminder!")
                 .setContentText("Its time for Isha")
                 .setAutoCancel(true)
                 .setDefaults(RingtonePreference.DEFAULT_ORDER)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
+                .addAction(R.drawable.alarm_clock,charSequence,pendingIntent)
                 .setVibrate(new long[] { 0, 200, 100, 200 })
                 .setSmallIcon(R.drawable.ic_launcher_foreground);
     }
