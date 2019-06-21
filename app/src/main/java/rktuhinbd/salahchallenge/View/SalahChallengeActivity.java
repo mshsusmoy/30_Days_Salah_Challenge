@@ -1,6 +1,7 @@
 package rktuhinbd.salahchallenge.View;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,11 +9,13 @@ import android.widget.Button;
 
 import java.util.Objects;
 
+import rktuhinbd.salahchallenge.Model.DatabaseHelper;
 import rktuhinbd.salahchallenge.R;
 
 public class SalahChallengeActivity extends AppCompatActivity {
 
     private Button btDay1, btDay2, btDay3, btDay4, btDay5, btDay6, btDay7, btDay8, btDay9, btDay10, btDay11, btDay12, btDay13, btDay14, btDay15, btDay16, btDay17, btDay18, btDay19, btDay20, btDay21, btDay22, btDay23, btDay24, btDay25, btDay26, btDay27, btDay28, btDay29, btDay30;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class SalahChallengeActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        databaseHelper = new DatabaseHelper(this);
 
         btDay1 = findViewById(R.id.btn_one);
         btDay2 = findViewById(R.id.btn_two);
@@ -365,6 +370,36 @@ public class SalahChallengeActivity extends AppCompatActivity {
         });
 
     }
+
+//    private void getSalahInformation() {
+//        //Fetch Database Values
+//        Cursor cursor = databaseHelper.getSalahInformation(day);
+//
+//        while (cursor.moveToNext()) {
+//            salahName = cursor.getString(2);
+//            farz = cursor.getString(3);
+//
+//            if (salahName.equals("Fajr")) {
+//
+//            }
+//
+//            if (salahName.equals("Zuhr")) {
+//
+//            }
+//
+//            if (salahName.equals("Asr")) {
+//
+//            }
+//
+//            if (salahName.equals("Maghrib")) {
+//
+//            }
+//
+//            if (salahName.equals("Isha")) {
+//
+//            }
+//        }
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {

@@ -19,6 +19,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String FARZ = "farz";
     private static final String SUNNAH = "sunnah";
     private static final String NAFL = "nafl";
+    private static final String COUNTER = "counter";
 
     //SALAH INFORMATION TABLE CREATION QUERY
     private static final String CREATE_SALAH_INFORMATION_TABLE = "CREATE TABLE " + SALAH_INFORMATION_TABLE + "("
@@ -27,7 +28,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + SALAH_NAME + " VARCHAR(10) NOT NULL, "
             + FARZ + " VARCHAR(2) NOT NULL, "
             + SUNNAH + " VARCHAR(2) NOT NULL, "
-            + NAFL + " VARCHAR(2))";
+            + NAFL + " VARCHAR(2), "
+            + COUNTER + " INTEGER(2))";
     private Context context;
 
     public DatabaseHelper(Context context) {
@@ -51,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Insert data into Salah Information Table
-    public long insertSalahInformation(String day, String salahName, String farz, String sunnah, String nafl) {
+    public long insertSalahInformation(String day, String salahName, String farz, String sunnah, String nafl, int counter) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(DAY, day);
@@ -59,6 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(FARZ, farz);
         contentValues.put(SUNNAH, sunnah);
         contentValues.put(NAFL, nafl);
+        contentValues.put(COUNTER, counter);
 
         long input = sqLiteDatabase.insert(SALAH_INFORMATION_TABLE, null, contentValues);
 

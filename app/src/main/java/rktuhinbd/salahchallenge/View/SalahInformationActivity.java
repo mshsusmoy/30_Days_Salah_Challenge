@@ -37,6 +37,7 @@ public class SalahInformationActivity extends AppCompatActivity {
     private Button btSaveFajr, btSaveZuhr, btSaveAsr, btSaveMaghrib, btSaveIsha;
 
     private String farz, sunnah, nafl, day, salahName;
+    private int salahCounter = 1;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -196,7 +197,7 @@ public class SalahInformationActivity extends AppCompatActivity {
         if (farz.equals("")) {
             Toast.makeText(getApplicationContext(), "Please check your input!", Toast.LENGTH_SHORT).show();
         } else {
-            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl);
+            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl, salahCounter);
 //            etFarzFajr.setEnabled(false);
 //            etSunnahFajr.setEnabled(false);
             Toast.makeText(getApplicationContext(), "Your salah information is saved!", Toast.LENGTH_SHORT).show();
@@ -212,7 +213,7 @@ public class SalahInformationActivity extends AppCompatActivity {
         if (farz.equals("")) {
             Toast.makeText(getApplicationContext(), "Please check your input!", Toast.LENGTH_SHORT).show();
         } else {
-            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl);
+            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl, salahCounter);
 //            etFarzZuhr.setEnabled(false);
 //            etSunnahZuhr.setEnabled(false);
 //            etNaflZuhr.setEnabled(false);
@@ -229,7 +230,7 @@ public class SalahInformationActivity extends AppCompatActivity {
         if (farz.equals("")) {
             Toast.makeText(getApplicationContext(), "Please check your input!", Toast.LENGTH_SHORT).show();
         } else {
-            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl);
+            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl, salahCounter);
 //            etFarzAsr.setEnabled(false);
 //            etSunnahAsr.setEnabled(false);
             Toast.makeText(getApplicationContext(), "Your salah information is saved!", Toast.LENGTH_SHORT).show();
@@ -245,7 +246,7 @@ public class SalahInformationActivity extends AppCompatActivity {
         if (farz.equals("")) {
             Toast.makeText(getApplicationContext(), "Please check your input!", Toast.LENGTH_SHORT).show();
         } else {
-            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl);
+            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl, salahCounter);
 //            etFarzMaghrib.setEnabled(false);
 //            etSunnahMaghrib.setEnabled(false);
 //            etNaflMaghrib.setEnabled(false);
@@ -262,7 +263,7 @@ public class SalahInformationActivity extends AppCompatActivity {
         if (farz.equals("")) {
             Toast.makeText(getApplicationContext(), "Please check your input!", Toast.LENGTH_SHORT).show();
         } else {
-            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl);
+            databaseHelper.insertSalahInformation(day, salahName, farz, sunnah, nafl, salahCounter);
 //            etFarzIsha.setEnabled(false);
 //            etSunnahIsha.setEnabled(false);
 //            etNaflIsha.setEnabled(false);
