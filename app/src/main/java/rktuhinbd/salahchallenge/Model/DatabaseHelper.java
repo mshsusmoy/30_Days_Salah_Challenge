@@ -71,6 +71,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return input;
     }
 
+
+
     //Retrieve data from Salah Information Table
     public Cursor getSalahInformation(String day) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
